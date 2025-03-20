@@ -15,6 +15,7 @@ public class Klient {
                 "czyStaly:" + czyStaly);
     }
 
+
     public int getId() {
         return id;
     }
