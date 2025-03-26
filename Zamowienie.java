@@ -5,15 +5,59 @@ public class Zamowienie {
     private Produkt[] produkty;
     private int[] ilosc;
     private String dataZamowienia;
-    private String statusZamowienia;
+    private String status;
 
     public void iloscproduktow() {
 
-        for (int i = 0; i < produkty.length; i++) {
-            Produkt produkt = produkty[i];
+        int suma = 0;
+
+        for (Produkt produkt : produkty) {
+            System.out.println("Produkt" + produkt.getNazwa() + "Ilość");
+            suma += produkt.getIloscWMagazynie();
+
         }
     }
 
+    public double obliczWartośćZamowienie() {
+
+        double suma = 0.0;
+
+        for (Produkt produkt : produkty) {
+            System.out.println("cena zamowienia" + produkt.getCena());
+            suma += produkt.getCena();
+        }
+        return suma;
+    }
+
+
+    public double zastosujZniżke(){
+
+        double suma = 0.0;
+
+        for (Produkt produkt : produkty) {
+            suma += produkt.getCena();
+        }
+
+        if (klient.getEmail() > 3){
+            suma *= 0.9;
+        }
+        return suma;
+    }
+
+
+    public String wyświetlStatus() {
+
+        for (Produkt produkt : produkty) {
+            if (produkt.getIloscWMagazynie() < 0) {
+                System.out.println("w realizacji");
+            }else if (produkt.getIloscWMagazynie() == 0) {
+                System.out.println("zrealizowane");
+            }else {
+                System.out.println("nowe");
+            }
+        }
+        return status;
+    }
 
     public int getId() {
         return id;
@@ -51,9 +95,9 @@ public class Zamowienie {
     }
 
     public String getStatusZamowienia() {
-        return statusZamowienia;
+        return status;
     }
-    public void setStatusZamowienia(String statusZamowienia) {
-        this.statusZamowienia = statusZamowienia;
+    public void setStatusZamowienia(String status) {
+        this.status = status;
     }
 }
