@@ -49,4 +49,5 @@ public class Produkt {
         this.iloscWMagazynie = iloscWMagazynie;
     }
 
+
 }
